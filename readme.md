@@ -22,3 +22,5 @@ git pull
 ```
 
 This will download all the latest commits!
+
+Do this whenever there are new commits.
