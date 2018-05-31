@@ -1,0 +1,93 @@
+<!--
+  DOCTYPE tells the brwoser which version of HTML
+  this document is using. HTML 5 in this case.
+  Disclaimer: This is not a tag.
+-->
+<!DOCTYPE html>
+
+<!--
+  The <html> tag is always the root or common ancestor
+  of all html documents. It will contain all other tags
+  in your page.
+-->
+<html>
+<!--
+  The <head> tag contains meta information about your document.
+  Such as title used for tab names in your browser, information
+  for search engines, etc. It's also used to load CSS & JS files.
+-->
+
+<head>
+  <title>✨ HTML & CSS Demo</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<!--
+  The <body> tag is used to hold tags that rendered in the browser
+  window. This is the content that the user can see.
+-->
+
+<body>
+  <!--
+    <header> is a semantic tag that describes content
+    that appears at the top of the document.
+  -->
+  <header>
+    <!--
+      <nav> is a semantic tag that describes content used to
+      navigate across multiple pages.
+    -->
+    <nav>
+      <a href="http://nyan.cat">Nyan Cat</a>
+      <a href="">Boards</a>
+      <a href="">Profile</a>
+
+      <form action="/process_data">
+        <input type="search" name="query" placeholder="Search here..." />
+        <input type="submit" value="Search" />
+      </form>
+    </nav>
+
+  </header>
+
+  <main>
+    <!--
+      The "id" html attribute works with any tag. It's used as a
+      unique identifier for that tag much like person's name. All
+      "id" on a page should be unique. If one tag has the "id"
+      "starred-boards", no other should have that "id".
+    -->
+    <section id="starred-boards">
+      <h1>Starred Boards</h1>
+
+      <ul>
+        <li>Management</li>
+        <li style="background-image: url(https://images.pexels.com/photos/391522/pexels-photo-391522.jpeg?auto=compress&cs=tinysrgb&h=350);">
+          Learning to Hack
+        </li>
+      </ul>
+    </section>
+
+    <section id="personal-boards">
+      <h1>Personal Boards</h1>
+
+      <ul>
+        <li>Management</li>
+        <li>
+          <div>Learning to Hack</div>
+          <img width="200px" src="https://images.pexels.com/photos/391522/pexels-photo-391522.jpeg?auto=compress&cs=tinysrgb&h=350"
+            alt="Sunshine through clouds" />
+
+        </li>
+        <li>
+          <div>My Ideas</div>
+          <img width="200px" src="https://images.pexels.com/photos/134062/pexels-photo-134062.jpeg?auto=compress&cs=tinysrgb&h=350"
+            alt="Foggy town" />
+        </li>
+        <li>Create New Board...</li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>

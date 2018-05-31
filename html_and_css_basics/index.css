@@ -1,0 +1,96 @@
+/* How do you select a link that's been visited? */
+
+/* This is a pseudo-class selector. It's based a behaviour
+   and modifies a selection.
+a:visited {
+  
+}
+*/
+
+/* How do you select a div with a cursor on top? */
+
+/*
+div:hover {
+
+}
+*/
+
+/* How do you select an element with the attribute data-content?  */
+
+/*
+*[data-content] {
+
+}
+*/
+
+/*
+[data-content] {
+
+}
+*/
+
+/* How do you select all child elements of ul, but the last?  */
+
+/*
+ul > *:not(:last-child) {
+}
+*/
+
+html {
+  font-family: Helvetica, sans-serif;
+  background-color: whitesmoke;
+}
+
+* {
+  font-family: inherit;
+}
+
+input {
+  font-size: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  margin: 10px;
+}
+
+header {
+  background-color: steelblue;
+  color: white;
+}
+
+nav {
+  padding: 10px;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav form {
+  display: inline-block;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+ul > li {
+  height: 75px;
+  background-color: cadetblue;
+  border-radius: 7px;
+
+  /*     vertical | horizontal */
+  margin: 10px 0;
+  padding: 5px;
+  color: white;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
