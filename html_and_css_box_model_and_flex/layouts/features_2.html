@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Features 2</title>
+
+  <style>
+    :root {
+      --base-margin: 15px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+
+      padding: var(--base-margin);
+    }
+
+    main>div {
+      min-height: 50px;
+      min-width: 50px;
+      background-color: darkseagreen;
+
+      margin: var(--base-margin);
+      width: calc(100%/3 - var(--base-margin) * 2);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </main>
+</body>
+
+</html>

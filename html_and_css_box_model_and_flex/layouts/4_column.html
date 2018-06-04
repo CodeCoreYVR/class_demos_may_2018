@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>4 Column</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      /*
+        box-sizing is used to determin the full height and/width of an
+        element is calculated:flex-direction:
+
+        - content-box
+          content height || width == height or width property
+          full height || full width == height/width + padding + margin + border
+        - border-box
+          content height || width == height/width - border - padding
+          full height || width == height/width + margin
+      */
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      height: 100vh;
+      padding: 20px 10px;
+    }
+
+    main>div {
+      min-height: 50px;
+      min-width: 50px;
+      /*    top | right | bottom | left */
+      /* margin: 1px 2px 3px 4px; */
+      margin: 0 10px;
+      flex-grow: 1;
+
+      background-color: darkseagreen;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </main>
+
+</body>
+
+</html>

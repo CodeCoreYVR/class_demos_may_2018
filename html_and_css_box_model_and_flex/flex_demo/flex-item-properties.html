@@ -1,127 +1,178 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Flex Properties</title>
-    <link rel="stylesheet" href="css/index.css" type="text/css" media="screen" charset="utf-8">
-    <style>
-      .flex-me {
-        display: flex;
-        background-color: azure;
-        border: thin solid teal;
-        border-radius: 5px;
-        min-height: 150px;
-      }
 
-      .flex-me > div {
-        width: 150px;
-        min-height: 75px;
-        background-color: teal;
-        border-radius: 5px;
-      }
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Flex Properties</title>
+  <link rel="stylesheet" href="css/index.css" type="text/css" media="screen" charset="utf-8">
+  <style>
+    .flex-me {
+      display: flex;
+      background-color: azure;
+      border: thin solid teal;
+      border-radius: 5px;
+      min-height: 150px;
+    }
 
-      .flex-me > div:nth-child(2n) {
-        background-color: firebrick;
-        min-height: 100px;
-      }
+    .flex-me>div {
+      width: 150px;
+      min-height: 75px;
+      background-color: teal;
+      border-radius: 5px;
+    }
 
-      .flex-me.flex-wrap-demo {
-        width: 50%;
-        min-height: 300px;
-      }
+    .flex-me>div:nth-child(2n) {
+      background-color: firebrick;
+      min-height: 100px;
+    }
 
-      .flex-me.align-content-demo {
-        width: 50%;
-        min-height: 300px;
-      }
+    .flex-me.flex-wrap-demo {
+      width: 50%;
+      min-height: 300px;
+    }
 
-      .num {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .num:after {
-        content: '0';
-        color: white;
-        font-size: 3em;
-      }
+    .flex-me.align-content-demo {
+      width: 50%;
+      min-height: 300px;
+    }
 
-      .num.one:after { content: '1'; }
-      .num.two:after { content: '2'; }
-      .num.three:after { content: '3'; }
-      .num.four:after { content: '4'; }
-      .num.five:after { content: '5'; }
+    .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    </style>
-  </head>
+    /* We're adding the numbers to the flex items using
+       a CSS pseudo-element. */
 
-  <body>
-    <h1>Flex Properties</h1>
+    .num::after {
+      content: '0';
+      color: white;
+      font-size: 3em;
+    }
 
-    <h2>Flex Item</h2>
-    <h3>Default</h3>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
+    .num.one:after {
+      content: '1';
+    }
 
-    <h3>order</h3>
-    <pre><strong>order:</strong> [any integer];</pre>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
+    .num.two:after {
+      content: '2';
+    }
 
-    <h3>flex-grow</h3>
-    <pre><strong>flex-grow:</strong> [any integer];</pre>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
+    .num.three:after {
+      content: '3';
+    }
 
-    <h3>flex-shrink</h3>
-    <pre><strong>flex-shrink:</strong> [any integer];</pre>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
+    .num.four:after {
+      content: '4';
+    }
 
-    <h3>flex-basis</h3>
-    <pre><strong>flex-basis:</strong> [any unit] | 0 | auto;</pre>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
+    .num.five:after {
+      content: '5';
+    }
+  </style>
+</head>
 
-    <h3>align-self</h3>
-    <pre><strong>align-self:</strong> stretch | flex-start | flex-end | center | baseline;</pre>
-    <div class="flex-me">
-      <div class="num"></div>
-      <div class="num one"></div>
-      <div class="num two"></div>
-      <div class="num three"></div>
-      <div class="num four"></div>
-      <div class="num five"></div>
-    </div>
-  </body>
+<body>
+  <h1>Flex Properties</h1>
+
+  <h2>Flex Item</h2>
+  <h3>Default</h3>
+  <div class="flex-me">
+    <div class="num"></div>
+    <div class="num one"></div>
+    <div class="num two"></div>
+    <div class="num three"></div>
+    <div class="num four"></div>
+    <div class="num five"></div>
+  </div>
+
+  <h3>order</h3>
+  <!--
+    The default value of `order` is 0.
+    Flex-item with larger values of order are placed at the end while
+    those with a smaller value are placed at the beginning.
+    The ordering for flex items, when their order values are the same, follows
+    their location in the html code.
+  -->
+  <pre><strong>order:</strong> [any integer];</pre>
+  <div class="flex-me">
+    <div class="num"></div>
+    <div class="num one" style="order: 1;"></div>
+    <div class="num two"></div>
+    <div class="num three"></div>
+    <div class="num four" style="order: -1;"></div>
+    <div class="num five"></div>
+  </div>
+
+  <h3>flex-grow</h3>
+  <!--
+    The default value for `flex-grow` is 0. This turns it off.
+    This property controls how a flex item's content grows to occupy
+    white space this is available inside of its parent flex container.
+    A flex item with a flex-grow of 2 will take up 2 times more space than
+    a flex-item with a value of 1.
+    Consider the items below flex-grows of 1, 2 and 3. To calculate
+    their relative white space consumption, do:
+    Total space available: 1 + 2 + 3 = 6
+    For 1: 1/6
+    For 2: 2/6 = 1/3
+    For 3: 3/6 =  1/2
+  -->
+  <pre><strong>flex-grow:</strong> [any integer];</pre>
+  <div class="flex-me">
+    <div class="num"></div>
+    <div class="num one" style="flex-grow: 1;"></div>
+    <div class="num two"></div>
+    <div class="num three" style="flex-grow: 2;"></div>
+    <div class="num four" style="flex-grow: 3;"></div>
+    <div class="num five"></div>
+  </div>
+
+  <h3>flex-shrink</h3>
+  <!--
+    `flex-shrink` begins with the default value of 1.
+  -->
+  <pre><strong>flex-shrink:</strong> [any integer];</pre>
+  <div class="flex-me">
+    <div class="num" style="flex-shrink: 0;"></div>
+    <div class="num one" style="flex-shrink: 2;"></div>
+    <div class=" num two "></div>
+    <div class="num three "></div>
+    <div class="num four "></div>
+    <div class="num five " style="flex-shrink: 6;"></div>
+  </div>
+
+  <h3>flex-basis</h3>
+  <!--
+    The `flex-basis` controls a dimension of a flex-item
+    based on the direction of the flex line. If the flex line is
+    oriented as a `row`, the flex basis will control the width of the
+    item. If the flex line is oriented as a `column`, the flex basis
+    control the height of the item. Only works on flex items.
+
+    Flex-basis works with any unit usuable with height/width.
+  -->
+  <pre><strong>flex-basis:</strong> [any unit] | 0 | auto;</pre>
+  <div class="flex-me " style="flex-direction: column;">
+    <div class="num " style="flex-basis: 400px"></div>
+    <div class="num one "></div>
+    <div class="num two "></div>
+    <div class="num three "></div>
+    <div class="num four "></div>
+    <div class="num five "></div>
+  </div>
+
+  <h3>align-self</h3>
+  <pre><strong>align-self:</strong> stretch | flex-start | flex-end | center | baseline;</pre>
+  <div class="flex-me ">
+    <div class="num "></div>
+    <div class="num one " style="align-self: flex-start;"></div>
+    <div class="num two " style="align-self: flex-end;"></div>
+    <div class="num three " style="align-self: center;"></div>
+    <div class="num four " style="align-self: baseline;"></div>
+    <div class="num five " style="align-self: baseline;"></div>
+  </div>
+</body>
+
 </html>
