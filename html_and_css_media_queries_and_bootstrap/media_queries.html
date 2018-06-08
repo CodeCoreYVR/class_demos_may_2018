@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML & CSS: Media Queries Demo</title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --spacer: 10px;
+      --base-height: 250px;
+    }
+
+    header {
+      background-color: black;
+    }
+
+    header>nav {
+      padding: 10px;
+    }
+
+    .nav-brand {
+      font-size: 2em;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacer);
+    }
+
+    main>div {
+      margin: var(--spacer);
+      background-color: lavender;
+      height: var(--base-height);
+      transition: 0.5s height 0s, 0.5s background-color 0s;
+    }
+
+    main>div:first-child {
+      height: calc(var(--base-height) * 1.5);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      main {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      main>div {
+        background-color: chocolate;
+        width: calc(50% - var(--spacer) * 2);
+      }
+
+      main>div:first-child {
+        width: calc(100% - var(--spacer) * 2);
+      }
+    }
+
+    @media (min-width: 768px) {
+      main {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      main>div {
+        background-color: cadetblue;
+        width: calc(100% / 3 - var(--spacer) * 2);
+      }
+
+      main>div:first-child {
+        width: calc(100% * 2/3 - var(--spacer) * 2);
+      }
+
+      main>div:nth-child(2) {
+        height: calc(var(--base-height) * 1.5)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="nav-brand">🤖</a>
+    </nav>
+  </header>
+
+  <main>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </main>
+</body>
+
+</html>
