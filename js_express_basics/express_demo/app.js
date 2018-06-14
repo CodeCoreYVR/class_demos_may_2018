@@ -2,6 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
+// This configures our express app to "ejs" to
+// render its views (the HTML it responds with.)
+app.set("view engine", "ejs");
+
 // Calling "morgan" returns a middleware function that
 // we pass as a argument to app.use(). Everytime
 // a request will be made to our this middleware function
@@ -39,6 +43,18 @@ app.get("/hello_world", (request, response) => {
   // of a express app we will build the response then
   // finally send it.
   response.send("Hello, Universe!");
+});
+
+app.get("/", (request, response) => {
+  // `response.render(<ejs-filename>)` is used to
+  // render an template from the "views/" directory.
+  // Replace <ejs-filename> with a path to a file
+  // beginning after the "views/" directory ignoring
+  // the file extension.
+
+  // The call below is looking for a file at
+  // `./views/welcome.ejs`
+  response.render("welcome");
 });
 
 const PORT = 4545;
