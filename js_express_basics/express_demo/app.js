@@ -31,7 +31,7 @@ app.get("/hello_world", (request, response) => {
   // the server's reply to the client. Through the course
   // of a express app we will build the response then
   // finally send it.
-  response.send("Hello, World!");
+  response.send("Hello, Universe!");
 });
 
 const PORT = 4545;
