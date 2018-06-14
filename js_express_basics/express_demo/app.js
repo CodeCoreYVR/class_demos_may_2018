@@ -57,6 +57,48 @@ app.get("/", (request, response) => {
   response.render("welcome");
 });
 
+// "/survey" is the URL path to get this route.
+app.get("/survey", (request, response) => {
+  // To make use of query string data, access with the query
+  // property on the request object. Express will have converted to
+  // a JavaScript object.
+  console.log("Query string:", request.query);
+  // "survey" in render() is the EXACT name of file inside of
+  // "views/" without the extension (i.e. .ejs).
+  response.render("survey");
+});
+
+// .../survey?fullName=Steve&timeOfDay=Morning&colour=%23942192
+//     path  | query string
+
+// A "query" is a way to represent in a url using the
+// URL Encoding format.
+// Following a url's path a query beings with "?".
+// It is followed by key's and value's that correspong to
+// the input's name and value respectively when form is submitted.
+// ?[key]=[value]&[key]=[value]&[key]=[value]
+
+app.get("/survey/results", (request, response) => {
+  // Use response.send() with variables to check to display in the
+  // browser as JSON. Here we use to display the contents
+  // of `request.query`.
+  // response.send(request.query);
+
+  const fullName = request.query.fullName;
+  const timeOfDay = request.query.timeOfDay;
+  const color = request.query.color;
+
+  // (optional) `response.render` can take an object as
+  // a second argument. All property-value pairs of that
+  // object will become variables named after the property
+  // inside of the template's ejs file.
+  response.render("surveyResults", {
+    fullName: fullName,
+    timeOfDay: timeOfDay,
+    color: color
+  });
+});
+
 const PORT = 4545;
 const DOMAIN = "localhost"; // 127.0.0.1
 app.listen(PORT, DOMAIN, () => {
