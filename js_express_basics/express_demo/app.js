@@ -1,5 +1,12 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
+
+// Calling "morgan" returns a middleware function that
+// we pass as a argument to app.use(). Everytime
+// a request will be made to our this middleware function
+// will be called.
+app.use(morgan("dev"));
 
 // URL http://localhost:4545/hello_world
 // scheme  | host     | port | path
