@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 // This configures our express app to "ejs" to
@@ -25,6 +26,50 @@ app.use(morgan("dev"));
 const staticAssetsPath = path.join(__dirname, "public");
 // console.log("Full path to app.js:", __dirname);
 app.use(express.static(staticAssetsPath));
+
+// URLENCODED MIDDLEWARE
+
+// This middleware will decode data from forms using
+// the POST method. The "extended" option will support
+// arrays and objects in forms if set to true.
+app.use(express.urlencoded({ extended: true }));
+// This middleware will put the form's data in an
+// object at `req.body` instead of `req.query`.
+
+// COOKIE PARSER MIDDLEWARE
+
+app.use(cookieParser());
+
+// CUSTOM MIDDLEWARE
+
+// With app.use, the callback handle any request regardless
+// of its HTTP verb (or method).
+app.use((req, res, next) => {
+  // Access your cookies from the request object with
+  // the .cookies properties. They are represented as
+  // an object where each key correspond to the name
+  // of cookie.
+  // You install "cookie-parser" middleware to make
+  // this available.
+  console.log("Cookies:", req.cookies);
+  const username = req.cookies.username;
+
+  // Use res.locals to assign variables that globally
+  // availabe all templates renderd with res.render()
+  // The line below means all templates will have
+  // variables named "username" containing an empty string.
+  res.locals.username = "";
+
+  if (username) {
+    res.locals.username = username;
+    console.log(`🤓 User's username is ${username}`);
+  }
+
+  // The third argument, "next", is a function that
+  // when called tells Express that this middleware has completed
+  // and it should move on to the one in line.
+  next();
+});
 
 // URL http://localhost:4545/hello_world
 // scheme  | host     | port | path
@@ -58,6 +103,8 @@ app.get("/hello_world", (request, response) => {
   // finally send it.
   response.send("Hello, Universe!");
 });
+
+// WELCOME PAGE
 
 app.get("/", (request, response) => {
   // `response.render(<ejs-filename>)` is used to
@@ -111,6 +158,32 @@ app.get("/survey/results", (request, response) => {
     timeOfDay: timeOfDay,
     color: color
   });
+});
+
+const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 7;
+app.post("/sign_in", (req, res) => {
+  const username = req.body.username;
+
+  // res.cookie(<cookie-name>, <cookie-value>, <options>)
+  // 👆 is added to the response object by the "cookie-parser"
+  // middleware. Use to create cookies setting them in
+  // the response sent to the browser.
+  // - The first argument is the name of the cookie
+  // - The second argument is the cookie's value
+  // - The last and optional argument are options for the
+  //   cookie such as its maximum age.
+
+  res.cookie("username", username, { maxAge: COOKIE_MAX_AGE });
+
+  // Like res.send & res.render, res.redirect will terminate response
+  // with a redirect status code and location (i.e. URL) where
+  // the browser should make a GET request to (browsing to that URL).
+  res.redirect("/");
+});
+
+app.post("/sign_out", (req, res) => {
+  res.clearCookie("username");
+  res.redirect("/");
 });
 
 const PORT = 4545;
