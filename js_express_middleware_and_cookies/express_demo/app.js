@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
@@ -6,11 +7,24 @@ const app = express();
 // render its views (the HTML it responds with.)
 app.set("view engine", "ejs");
 
+// MIDDLEWARE
+
 // Calling "morgan" returns a middleware function that
 // we pass as a argument to app.use(). Everytime
 // a request will be made to our this middleware function
 // will be called.
 app.use(morgan("dev"));
+
+// STATIC ASSETS
+// Use path.join to combine strings into directory paths.
+// Example: path.join("Users", "sg") -> "User/sg"
+
+// __dirname is a global variable useable inside scripts run by
+// Node. It gives the full path beginning from root (i.e. /) to
+// the file that contains __dirname.
+const staticAssetsPath = path.join(__dirname, "public");
+// console.log("Full path to app.js:", __dirname);
+app.use(express.static(staticAssetsPath));
 
 // URL http://localhost:4545/hello_world
 // scheme  | host     | port | path
