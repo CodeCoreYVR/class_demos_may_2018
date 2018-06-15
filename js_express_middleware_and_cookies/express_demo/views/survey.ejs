@@ -1,0 +1,28 @@
+<%- include("./partials/header") %>
+
+<h1>Survey</h1>
+
+<form action="/survey/results">
+  <div>
+    <label for="fullName">What is your name?</label> <br>
+    <input type="text" id="fullName" name="fullName">
+  </div>
+
+  <div>
+    <label>What is your favourite time of day?</label> <br>
+
+    <% for (let option of ["Morning", "Afternoon", "Evening", "Night"]) { %>
+      <label><%= option %></label>
+      <input type="radio" name="timeOfDay" value="<%= option %>">
+    <% } %>
+  </div>
+
+  <div>
+    <label>What is your favourite color?</label> <br />
+    <input type="color" name="color">
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+
+<%- include("./partials/footer") %>
