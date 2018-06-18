@@ -43,9 +43,38 @@ router.post("/", (req, res) => {
     })
     .into("posts")
     .returning("*")
-    .then(result => {
-      console.log("Posts insert result:", result);
-      res.send(result);
+    .then(([post]) => {
+      console.log("Posts insert result:", post);
+      res.redirect(`/posts/${post.id}`);
+    });
+});
+
+// Posts#show
+// GET /posts/:id
+router.get("/:id", (req, res) => {
+  // Use "req.params" to acces URL params from a request.
+  // URL params only appear for paths using `:` in front
+  // of names.
+  // Examples:
+  // /posts/20 -> req.params == {id: 20}
+  // /:name/:occupation -> /jon/king ->
+  //   req.params == {name: "jon", occupation: "king"}
+  // res.send(req.params);
+
+  // https://knexjs.org/#Builder-select
+  knex
+    .select("*")
+    .from("posts")
+    .where({ id: req.params.id }) // WHERE id = 2
+    .then(results => {
+      // Array destructuring
+      // The line below will create a variable named
+      // that is assigned first of the results array.
+      const [post] = results;
+      // const post = results[0];
+
+      // res.send(post);
+      res.render("posts/show", { post: post });
     });
 });
 
