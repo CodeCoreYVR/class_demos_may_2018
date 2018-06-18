@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:create": "createdb --echo express_demo",
+    "db:drop": "dropdb --echo express_demo"
   },
   "keywords": [
     "express",
