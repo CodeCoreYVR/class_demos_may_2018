@@ -4,6 +4,9 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const app = express();
 
+// Route Requires
+const postsRouter = require("./routes/posts");
+
 // This configures our express app to "ejs" to
 // render its views (the HTML it responds with.)
 app.set("view engine", "ejs");
@@ -186,13 +189,8 @@ app.post("/sign_out", (req, res) => {
   res.redirect("/");
 });
 
-// CRUD for POSTS
-
-// Posts#new
-// GET /posts/new
-app.get("/posts/new", (req, res) => {
-  res.render("posts/new");
-});
+// Connect Routers to App
+app.use("/posts", postsRouter);
 
 const PORT = 4545;
 const DOMAIN = "localhost"; // 127.0.0.1
