@@ -186,6 +186,14 @@ app.post("/sign_out", (req, res) => {
   res.redirect("/");
 });
 
+// CRUD for POSTS
+
+// Posts#new
+// GET /posts/new
+app.get("/posts/new", (req, res) => {
+  res.render("posts/new");
+});
+
 const PORT = 4545;
 const DOMAIN = "localhost"; // 127.0.0.1
 app.listen(PORT, DOMAIN, () => {
