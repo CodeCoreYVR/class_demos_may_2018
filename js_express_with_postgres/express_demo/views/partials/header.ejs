@@ -24,7 +24,10 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/">Welcome</a>
         <a class="nav-item nav-link" href="/survey">Survey</a>
-        <a class="nav-item nav-link" href="/posts/new">New Post</a>
+        <a class="nav-item nav-link" href="/posts">Posts</a>
+        <% if (username) { %> 
+          <a class="nav-item nav-link" href="/posts/new">New Post</a>
+        <% } %>
       </div>
     </div>
 

@@ -78,6 +78,17 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Posts#index
+// GET /posts
+router.get("/", (req, res) => {
+  knex
+    .select("*")
+    .from("posts")
+    .then(posts => {
+      res.render("posts/index", { posts: posts });
+    });
+});
+
 // To able to use this file in other files, you
 // must export a value (e.g. array, object, number, string, class, etc.)
 // For this file, we'll export the "router" to be able to
