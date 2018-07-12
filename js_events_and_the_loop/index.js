@@ -191,3 +191,16 @@ document.addEventListener("keydown", event => {
     window.location.href = "http://nyan.cat";
   }
 });
+
+// Exercise: Shortcuts of The Ninja
+
+let keyBuffer = "";
+document.addEventListener("keydown", event => {
+  const { key } = event;
+  if (key.length < 2) {
+    keyBuffer = (keyBuffer + key).slice(-5);
+  }
+  if (keyBuffer.toLowerCase() === "panic") {
+    location.href = "http://hackertyper.net";
+  }
+});
