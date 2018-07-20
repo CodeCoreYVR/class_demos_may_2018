@@ -152,3 +152,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// Chat-Battle Solutions
+
+function createMessage(text) {
+  return fetch("/messages/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      body: text
+    })
+  });
+}
+
+fetch(`/messages`)
+  .then(res => res.json())
+  .then(ms => console.log(ms.length));
+
+function replaceMessage(id, text) {
+  return fetch(`/messages/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      body: text
+    })
+  });
+}
+
+function deleteMessage(id) {
+  return fetch(`/messages/${id}`, {
+    method: "DELETE"
+  });
+}
+
+function copyMessage(id) {
+  return fetch(`/messages`)
+    .then(res => res.json())
+    .then(messages => {
+      const message = messages.find(m => m.id === id);
+      return createMessage(message.body);
+    });
+}
