@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Awesome Answers</title>
+  <script src="/js/index.js"></script>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#" data-target="welcome">Home</a>
+      |
+      <a href="#" data-target="question-new">New Question</a>
+      |
+      <a href="#" data-target="question-index">Questions</a>
+    </nav>
+  </header>
+
+  <main id="welcome" class="page active">
+    <h1>Awesome Answers</h1>
+  </main>
+
+  <main id="question-index" class="page">
+    <ul class="question-list"></ul>
+  </main>
+
+  <main id="question-new" class="page">
+    <h1>New Question</h1>
+
+    <form id="question-new-form">
+      <div>
+        <input type="text" name="title" placeholder="What's your question?">
+      </div>
+      <div>
+        <textarea name="body" cols="30" rows="10" placeholder="Tell me more"></textarea>
+      </div>
+      <input type="submit" value="Create Question">
+    </form>
+  </main>
+
+  <main id="question-show" class="page">
+  </main>
+
+</body>
+
+</html>
