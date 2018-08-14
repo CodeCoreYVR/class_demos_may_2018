@@ -24,5 +24,25 @@ module.exports = {
     // as specified by the keys in the `entry` property
     // of this config file. (e.g. client, server)
     filename: "[name].bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        // The test below will apply this
+        // rule when an imported file ends
+        // in either .png, .jpg or .gif.
+        test: /\.(png|jpg|gif)$/,
+        // The `loader` is a package that we install
+        // that tells Webpack how to process files
+        // other JavaScript.
+        loader: "file-loader",
+        // Every loader will have their own set of options.
+        // Configure these with the `options` property
+        // in the rule.
+        options: {
+          outputPath: "images/"
+        }
+      }
+    ]
   }
 };
