@@ -45,12 +45,26 @@ module.exports = {
         }
       },
       {
-        test: /.css$/,
+        test: /\.css$/,
         use: ["style-loader", "css-loader"]
         // use: [
         //   {loader: "style-loader"},
         //   {loader: "css-loader", options: {}}
         // ]
+      },
+      {
+        // To use babel with webpack, you must
+        // install the babel-loader and
+        // configure to process JavaScript files.
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        // Use `exclude` property with a regular like
+        // `test` specify files and directories
+        // that be ignored. In this case, we only
+        // ignore files from the node_modules/
+        // because babel should only process
+        // our own files.
+        loader: "babel-loader"
       }
     ]
   },

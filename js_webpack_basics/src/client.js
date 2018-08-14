@@ -1,3 +1,4 @@
+import "./reactDemo.jsx";
 import "./scriptA";
 import "./scriptB";
 
