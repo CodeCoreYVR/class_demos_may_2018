@@ -22,5 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const redPandaImg = document.createElement("img");
   redPandaImg.src = redPandaPath;
 
+  const title = document.createElement("h1");
+  title.innerText = "Welcome to Webpack!";
+
+  document.body.prepend(title);
   document.body.append(sovietBearImg, redPandaImg);
 });
