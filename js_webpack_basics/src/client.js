@@ -1,6 +1,8 @@
 import "./scriptA";
 import "./scriptB";
 
+import "./css/main.css";
+
 // Importing images will only work if
 // "file-loader" is installed and setup.
 // When importing an image, you will receive
